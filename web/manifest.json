@@ -1,11 +1,11 @@
 {
-    "name": "hello_world",
-    "short_name": "hello_world",
+    "name": "TafseerRazi",
+    "short_name": "tafseer_razi",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Comprehensive Quranic tafseer by Imam Fakhr al-Din Razi, insightful wisdom.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

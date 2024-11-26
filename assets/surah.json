@@ -1,0 +1,800 @@
+[
+  {
+    "sid": 1,
+    "stitle": "سورة الفاتحة",
+    "sfav": "001",
+    "sAyah": 7,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 2,
+    "stitle": "سورة البقرة",
+    "sfav": "002",
+    "sAyah": 286,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 3,
+    "stitle": "سورة آل عمران",
+    "sfav": "البقرة",
+    "sAyah": 200,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 4,
+    "stitle": "سورة النساء",
+    "sfav": "!",
+    "sAyah": 176,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 5,
+    "stitle": "سورة المائدة",
+    "sfav": 0,
+    "sAyah": 120,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 6,
+    "stitle": "سورة الأنعام",
+    "sfav": 0,
+    "sAyah": 165,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 7,
+    "stitle": "سورة الأعراف",
+    "sfav": 0,
+    "sAyah": 206,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 8,
+    "stitle": "سورة الأنفال",
+    "sfav": 0,
+    "sAyah": 75,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 9,
+    "stitle": "سورة التوبة",
+    "sfav": 0,
+    "sAyah": 129,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 10,
+    "stitle": "سورة يونس",
+    "sfav": 0,
+    "sAyah": 109,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 11,
+    "stitle": "سورة هود",
+    "sfav": 0,
+    "sAyah": 123,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 12,
+    "stitle": "سورة يوسف",
+    "sfav": 0,
+    "sAyah": 111,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 13,
+    "stitle": "سورة الرعد",
+    "sfav": 0,
+    "sAyah": 43,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 14,
+    "stitle": "سورة إبراهيم",
+    "sfav": 0,
+    "sAyah": 52,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 15,
+    "stitle": "سورة الحجر",
+    "sfav": 0,
+    "sAyah": 99,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 16,
+    "stitle": "سورة النحل",
+    "sfav": 0,
+    "sAyah": 128,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 17,
+    "stitle": "سورة الإسراء",
+    "sfav": 0,
+    "sAyah": 111,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 18,
+    "stitle": "سورة الكهف",
+    "sfav": 0,
+    "sAyah": 110,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 19,
+    "stitle": "سورة مريم",
+    "sfav": 0,
+    "sAyah": 98,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 20,
+    "stitle": "سورة طـه",
+    "sfav": 0,
+    "sAyah": 135,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 21,
+    "stitle": "سورة الأنبياء",
+    "sfav": 0,
+    "sAyah": 112,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 22,
+    "stitle": "سورة الحج",
+    "sfav": 0,
+    "sAyah": 78,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 23,
+    "stitle": "سورة المؤمنون",
+    "sfav": 0,
+    "sAyah": 118,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 24,
+    "stitle": "سورة النور",
+    "sfav": 0,
+    "sAyah": 64,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 25,
+    "stitle": "سورة الفرقان",
+    "sfav": 0,
+    "sAyah": 77,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 26,
+    "stitle": "سورة الشعراء",
+    "sfav": 0,
+    "sAyah": 227,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 27,
+    "stitle": "سورة النمل",
+    "sfav": 0,
+    "sAyah": 93,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 28,
+    "stitle": "سورة القصص",
+    "sfav": 0,
+    "sAyah": 88,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 29,
+    "stitle": "سورة العنكبوت",
+    "sfav": 0,
+    "sAyah": 69,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 30,
+    "stitle": "سورة الروم",
+    "sfav": 0,
+    "sAyah": 60,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 31,
+    "stitle": "سورة لقمان",
+    "sfav": 0,
+    "sAyah": 34,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 32,
+    "stitle": "سورة السجدة",
+    "sfav": 0,
+    "sAyah": 30,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 33,
+    "stitle": "سورة الأحزاب",
+    "sfav": 0,
+    "sAyah": 73,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 34,
+    "stitle": "سورة سبأ",
+    "sfav": 0,
+    "sAyah": 54,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 35,
+    "stitle": "سورة فاطر",
+    "sfav": 0,
+    "sAyah": 45,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 36,
+    "stitle": "سورة يس",
+    "sfav": 0,
+    "sAyah": 83,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 37,
+    "stitle": "سورة الصافات",
+    "sfav": 0,
+    "sAyah": 181,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 38,
+    "stitle": "سورة ص",
+    "sfav": 0,
+    "sAyah": 88,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 39,
+    "stitle": "سورة الزمر",
+    "sfav": 0,
+    "sAyah": 75,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 40,
+    "stitle": "سورة غافر",
+    "sfav": 0,
+    "sAyah": 85,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 41,
+    "stitle": "سورة فصلت",
+    "sfav": 0,
+    "sAyah": 54,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 42,
+    "stitle": "سورة الشورى",
+    "sfav": 0,
+    "sAyah": 53,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 43,
+    "stitle": "سورة الزخرف",
+    "sfav": 0,
+    "sAyah": 89,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 44,
+    "stitle": "سورة الدخان",
+    "sfav": 0,
+    "sAyah": 59,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 45,
+    "stitle": "سورة الجاثية",
+    "sfav": 0,
+    "sAyah": 37,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 46,
+    "stitle": "سورة الأحقاف",
+    "sfav": 0,
+    "sAyah": 35,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 47,
+    "stitle": "سورة محمد",
+    "sfav": 0,
+    "sAyah": 38,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 48,
+    "stitle": "سورة الفتح",
+    "sfav": 0,
+    "sAyah": 29,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 49,
+    "stitle": "سورة الحجرات",
+    "sfav": 0,
+    "sAyah": 18,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 50,
+    "stitle": "سورة ق",
+    "sfav": 0,
+    "sAyah": 45,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 51,
+    "stitle": "سورة الذاريات",
+    "sfav": 0,
+    "sAyah": 60,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 52,
+    "stitle": "سورة الطور",
+    "sfav": 0,
+    "sAyah": 49,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 53,
+    "stitle": "سورة النجم",
+    "sfav": 0,
+    "sAyah": 62,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 54,
+    "stitle": "سورة القمر",
+    "sfav": 0,
+    "sAyah": 55,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 55,
+    "stitle": "سورة الرحمن",
+    "sfav": 0,
+    "sAyah": 78,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 56,
+    "stitle": "سورة الواقعة",
+    "sfav": 0,
+    "sAyah": 96,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 57,
+    "stitle": "سورة الحديد",
+    "sfav": 0,
+    "sAyah": 29,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 58,
+    "stitle": "سورة المجادلة",
+    "sfav": 0,
+    "sAyah": 22,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 59,
+    "stitle": "سورة الحشر",
+    "sfav": 0,
+    "sAyah": 24,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 60,
+    "stitle": "سورة الممتحنة",
+    "sfav": 0,
+    "sAyah": 13,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 61,
+    "stitle": "سورة الصف",
+    "sfav": 0,
+    "sAyah": 14,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 62,
+    "stitle": "سورة الجمعة",
+    "sfav": 0,
+    "sAyah": 11,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 63,
+    "stitle": "سورة المنافقون",
+    "sfav": 0,
+    "sAyah": 11,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 64,
+    "stitle": "سورة التغابن",
+    "sfav": 0,
+    "sAyah": 18,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 65,
+    "stitle": "سورة الطلاق",
+    "sfav": 0,
+    "sAyah": 12,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 66,
+    "stitle": "سورة التحريم",
+    "sfav": 0,
+    "sAyah": 12,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 67,
+    "stitle": "سورة الملك",
+    "sfav": 0,
+    "sAyah": 30,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 68,
+    "stitle": "سورة القلم",
+    "sfav": 0,
+    "sAyah": 52,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 69,
+    "stitle": "سورة الحاقة",
+    "sfav": 0,
+    "sAyah": 52,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 70,
+    "stitle": "سورة المعارج",
+    "sfav": 0,
+    "sAyah": 44,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 71,
+    "stitle": "سورة نوح",
+    "sfav": 0,
+    "sAyah": 28,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 72,
+    "stitle": "سورة الجن",
+    "sfav": 0,
+    "sAyah": 28,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 73,
+    "stitle": "سورة المزمل",
+    "sfav": 0,
+    "sAyah": 20,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 74,
+    "stitle": "سورة المدثر",
+    "sfav": 0,
+    "sAyah": 56,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 75,
+    "stitle": "سورة القيامة",
+    "sfav": 0,
+    "sAyah": 40,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 76,
+    "stitle": "سورة الإنسان",
+    "sfav": 0,
+    "sAyah": 31,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 77,
+    "stitle": "سورة المرسلات",
+    "sfav": 0,
+    "sAyah": 50,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 78,
+    "stitle": "سورة النبأ",
+    "sfav": 0,
+    "sAyah": 40,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 79,
+    "stitle": "سورة النازعات",
+    "sfav": 0,
+    "sAyah": 46,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 80,
+    "stitle": "سورة عبس",
+    "sfav": 0,
+    "sAyah": 42,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 81,
+    "stitle": "سورة التكوير",
+    "sfav": 0,
+    "sAyah": 29,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 82,
+    "stitle": "سورة الإنفطار",
+    "sfav": 0,
+    "sAyah": 19,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 83,
+    "stitle": "سورة المطففين",
+    "sfav": 0,
+    "sAyah": 36,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 84,
+    "stitle": "سورة الإنشقاق",
+    "sfav": 0,
+    "sAyah": 25,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 85,
+    "stitle": "سورة البروج",
+    "sfav": 0,
+    "sAyah": 22,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 86,
+    "stitle": "سورة الطارق",
+    "sfav": 0,
+    "sAyah": 17,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 87,
+    "stitle": "سورة الأعلى",
+    "sfav": 0,
+    "sAyah": 19,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 88,
+    "stitle": "سورة الغاشية",
+    "sfav": 0,
+    "sAyah": 26,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 89,
+    "stitle": "سورة الفجر",
+    "sfav": 0,
+    "sAyah": 30,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 90,
+    "stitle": "سورة البلد",
+    "sfav": 0,
+    "sAyah": 20,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 91,
+    "stitle": "سورة الشمس",
+    "sfav": 0,
+    "sAyah": 15,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 92,
+    "stitle": "سورة الليل",
+    "sfav": 0,
+    "sAyah": 21,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 93,
+    "stitle": "سورة الضحى",
+    "sfav": 0,
+    "sAyah": 11,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 94,
+    "stitle": "سورة الشرح",
+    "sfav": 0,
+    "sAyah": 8,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 95,
+    "stitle": "سورة التين",
+    "sfav": 0,
+    "sAyah": 8,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 96,
+    "stitle": "سورة العلق",
+    "sfav": 0,
+    "sAyah": 19,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 97,
+    "stitle": "سورة القدر",
+    "sfav": 0,
+    "sAyah": 5,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 98,
+    "stitle": "سورة البينة",
+    "sfav": 0,
+    "sAyah": 8,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 99,
+    "stitle": "سورة الزلزلة",
+    "sfav": 0,
+    "sAyah": 8,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 100,
+    "stitle": "سورة العاديات",
+    "sfav": 0,
+    "sAyah": 11,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 101,
+    "stitle": "سورة القارعة",
+    "sfav": 0,
+    "sAyah": 11,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 102,
+    "stitle": "سورة التكاثر",
+    "sfav": 0,
+    "sAyah": 8,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 103,
+    "stitle": "سورة العصر",
+    "sfav": 0,
+    "sAyah": 3,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 104,
+    "stitle": "سورة الهمزة",
+    "sfav": 0,
+    "sAyah": 9,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 105,
+    "stitle": "سورة الفيل",
+    "sfav": 0,
+    "sAyah": 5,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 106,
+    "stitle": "سورة قريش",
+    "sfav": 0,
+    "sAyah": 4,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 107,
+    "stitle": "سورة الماعون",
+    "sfav": 0,
+    "sAyah": 7,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 108,
+    "stitle": "سورة الكوثر",
+    "sfav": 0,
+    "sAyah": 3,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 109,
+    "stitle": "سورة الكافرون",
+    "sfav": 0,
+    "sAyah": 6,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 110,
+    "stitle": "سورة النصر",
+    "sfav": 0,
+    "sAyah": 3,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 111,
+    "stitle": "سورة المسد",
+    "sfav": 0,
+    "sAyah": 5,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 112,
+    "stitle": "سورة الإخلاص",
+    "sfav": 0,
+    "sAyah": 4,
+    "sType": "مكيّة"
+  },
+  {
+    "sid": 113,
+    "stitle": "سورة الفلق",
+    "sfav": 0,
+    "sAyah": 5,
+    "sType": "مدنيّة"
+  },
+  {
+    "sid": 114,
+    "stitle": "سورة الناس",
+    "sfav": 0,
+    "sAyah": 6,
+    "sType": "مكيّة"
+  }
+]
