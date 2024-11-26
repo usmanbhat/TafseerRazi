@@ -176,59 +176,80 @@ class _DetailsScreenState extends State<DetailsScreen> {
           : Directionality(
               textDirection: TextDirection.rtl,
               child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      surahData[currentIndex]['title'] ?? '',
-                      style: TextStyle(
-                        fontSize: textSize + 4,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Quran',
-                        color: textColor, // Apply text color
-                      ),
-                      textDirection: TextDirection.rtl,
-                    ),
-                    const SizedBox(height: 16),
-                    Expanded(
-                      child: ListView(
-                        children: [
-                          RichText(
-                            text: styleTextWithBraces(
-                              surahData[currentIndex]['details'] ?? '',
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        alignment: Alignment.center,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color: drawerColor, // Background color
+                          border: Border.all(
+                              color: textColor, width: 1), // Add a border
+                          borderRadius:
+                              BorderRadius.circular(8), // Round corners
+                          boxShadow: [
+                            BoxShadow(
+                              color: textColor, // Shadow color
+                              blurRadius: 4, // Spread of shadow
+                              offset: Offset(2, 2), // Position of shadow
                             ),
+                          ],
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 12, vertical: 8),
+                        margin: const EdgeInsets.only(bottom: 16),
+                        child: Text(
+                          surahData[currentIndex]['title'] ?? '',
+                          style: TextStyle(
+                            fontSize: textSize + 4,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Quran',
+                            color: textColor,
+                          ),
+                          textDirection: TextDirection.rtl,
+                        ),
+                      ),
+                      Expanded(
+                        child: ListView(
+                          children: [
+                            RichText(
+                              text: styleTextWithBraces(
+                                surahData[currentIndex]['details'] ?? '',
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          IconButton(
+                            icon: const Icon(Icons.arrow_back),
+                            color:
+                                Theme.of(context).appBarTheme.backgroundColor,
+                            onPressed: () {
+                              if (currentIndex > 0) {
+                                navigateToAyah(currentIndex - 1);
+                              }
+                            },
+                          ),
+                          IconButton(
+                            icon: const Icon(Icons.arrow_forward),
+                            color:
+                                Theme.of(context).appBarTheme.backgroundColor,
+                            onPressed: () {
+                              if (currentIndex < surahData.length - 1) {
+                                navigateToAyah(currentIndex + 1);
+                              }
+                            },
                           ),
                         ],
                       ),
-                    ),
-                    const SizedBox(height: 16),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        IconButton(
-                          icon: const Icon(Icons.arrow_back),
-                          color: Theme.of(context).appBarTheme.backgroundColor,
-                          onPressed: () {
-                            if (currentIndex > 0) {
-                              navigateToAyah(currentIndex - 1);
-                            }
-                          },
-                        ),
-                        IconButton(
-                          icon: const Icon(Icons.arrow_forward),
-                          color: Theme.of(context).appBarTheme.backgroundColor,
-                          onPressed: () {
-                            if (currentIndex < surahData.length - 1) {
-                              navigateToAyah(currentIndex + 1);
-                            }
-                          },
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
+                    ],
+                  )),
             ),
       endDrawer: buildDrawer(drawerColor, textColor),
     );
