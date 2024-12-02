@@ -5,11 +5,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../theme_provider.dart';
 
 class SettingsPage extends StatefulWidget {
+  const SettingsPage({Key? key}) : super(key: key);
+
   @override
-  _SettingsPageState createState() => _SettingsPageState();
+  SettingsPageState createState() => SettingsPageState();
 }
 
-class _SettingsPageState extends State<SettingsPage> {
+class SettingsPageState extends State<SettingsPage> {
   double fontSize = 16;
   String fontFamily = 'Noto';
 
@@ -35,25 +37,26 @@ class _SettingsPageState extends State<SettingsPage> {
     prefs.setDouble('fontSize', fontSize);
     prefs.setString('fontFamily', fontFamily);
     // Optionally show a snackbar or dialog indicating the settings were saved
+    // ignore: use_build_context_synchronously
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Settings saved successfully!')),
+      const SnackBar(content: Text('Settings saved successfully!')),
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Settings')),
+      appBar: AppBar(title: const Text('Settings')),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            Text('Font Size', style: TextStyle(fontSize: 20)),
+            const Text('Font Size', style: TextStyle(fontSize: 20)),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 IconButton(
-                  icon: FaIcon(FontAwesomeIcons.minus),
+                  icon: const FaIcon(FontAwesomeIcons.minus),
                   color: Theme.of(context).textTheme.bodyMedium?.color,
                   onPressed: () {
                     setState(() {
@@ -61,14 +64,14 @@ class _SettingsPageState extends State<SettingsPage> {
                     });
                   },
                   iconSize: 32,
-                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                 ),
                 Text(
                   fontSize.toStringAsFixed(0),
                   style: TextStyle(fontSize: fontSize, fontFamily: fontFamily),
                 ),
                 IconButton(
-                  icon: FaIcon(FontAwesomeIcons.plus),
+                  icon: const FaIcon(FontAwesomeIcons.plus),
                   color: Theme.of(context).textTheme.titleMedium?.color,
                   onPressed: () {
                     setState(() {
@@ -76,12 +79,12 @@ class _SettingsPageState extends State<SettingsPage> {
                     });
                   },
                   iconSize: 32,
-                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                 ),
               ],
             ),
-            SizedBox(height: 20),
-            Text('Font Type', style: TextStyle(fontSize: 20)),
+            const SizedBox(height: 20),
+            const Text('Font Type', style: TextStyle(fontSize: 20)),
             Wrap(
               spacing: 10.0,
               runSpacing: 10.0,
@@ -92,13 +95,15 @@ class _SettingsPageState extends State<SettingsPage> {
                       fontFamily = 'Noto';
                     });
                   },
-                  child: Text('Noto', style: TextStyle(fontFamily: 'Noto')),
                   style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 20),
                     backgroundColor: fontFamily == 'Noto'
                         ? Colors.blue
                         : null, // Highlight the selected font
                   ),
+                  child:
+                      const Text('Noto', style: TextStyle(fontFamily: 'Noto')),
                 ),
                 ElevatedButton(
                   onPressed: () {
@@ -106,13 +111,15 @@ class _SettingsPageState extends State<SettingsPage> {
                       fontFamily = 'Amiri';
                     });
                   },
-                  child: Text('Amiri', style: TextStyle(fontFamily: 'Amiri')),
                   style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 20),
                     backgroundColor: fontFamily == 'Amiri'
                         ? Colors.blue
                         : null, // Highlight the selected font
                   ),
+                  child: const Text('Amiri',
+                      style: TextStyle(fontFamily: 'Amiri')),
                 ),
                 ElevatedButton(
                   onPressed: () {
@@ -120,18 +127,20 @@ class _SettingsPageState extends State<SettingsPage> {
                       fontFamily = 'noor';
                     });
                   },
-                  child: Text('noor', style: TextStyle(fontFamily: 'noor')),
                   style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 20),
                     backgroundColor: fontFamily == 'noor'
                         ? Colors.blue
                         : null, // Highlight the selected font
                   ),
+                  child:
+                      const Text('noor', style: TextStyle(fontFamily: 'noor')),
                 ),
               ],
             ),
-            SizedBox(height: 20),
-            Text('Theme', style: TextStyle(fontSize: 20)),
+            const SizedBox(height: 20),
+            const Text('Theme', style: TextStyle(fontSize: 20)),
             Wrap(
               spacing: 10.0,
               runSpacing: 10.0,
@@ -142,10 +151,11 @@ class _SettingsPageState extends State<SettingsPage> {
                     Provider.of<ThemeProvider>(context, listen: false)
                         .setTheme(AppTheme.LightTheme);
                   },
-                  child: FaIcon(FontAwesomeIcons.sun, size: 24),
                   style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 20),
                   ),
+                  child: const FaIcon(FontAwesomeIcons.sun, size: 24),
                 ),
                 ElevatedButton(
                   onPressed: () {
@@ -153,10 +163,11 @@ class _SettingsPageState extends State<SettingsPage> {
                     Provider.of<ThemeProvider>(context, listen: false)
                         .setTheme(AppTheme.DarkTheme);
                   },
-                  child: FaIcon(FontAwesomeIcons.moon, size: 24),
                   style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 20),
                   ),
+                  child: const FaIcon(FontAwesomeIcons.moon, size: 24),
                 ),
                 ElevatedButton(
                   onPressed: () {
@@ -164,25 +175,27 @@ class _SettingsPageState extends State<SettingsPage> {
                     Provider.of<ThemeProvider>(context, listen: false)
                         .setTheme(AppTheme.CustomTheme);
                   },
-                  child: FaIcon(FontAwesomeIcons.bookOpen, size: 24),
                   style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 20),
                   ),
+                  child: const FaIcon(FontAwesomeIcons.bookOpen, size: 24),
                 ),
               ],
             ),
             // Save Button
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             ElevatedButton(
               onPressed: () {
                 _saveSettings(); // Save settings when pressed
                 Navigator.pop(
                     context, true); // Close the settings page and return true
               },
-              child: Text('Save Settings'),
               style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.symmetric(vertical: 12, horizontal: 50),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 12, horizontal: 50),
               ),
+              child: const Text('Save Settings'),
             ),
           ],
         ),

@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 
 // Define the enum for different themes
 enum AppTheme {
+  // ignore: constant_identifier_names
   LightTheme,
+  // ignore: constant_identifier_names
   DarkTheme,
+  // ignore: constant_identifier_names
   CustomTheme, // Sepia theme as custom
 }
 
@@ -12,7 +15,7 @@ extension AppThemeData on AppTheme {
     switch (this) {
       case AppTheme.DarkTheme:
         return ThemeData.dark().copyWith(
-          appBarTheme: AppBarTheme(
+          appBarTheme: const AppBarTheme(
             backgroundColor: Colors.black,
             titleTextStyle: TextStyle(color: Colors.white, fontSize: 20),
           ),
@@ -20,7 +23,7 @@ extension AppThemeData on AppTheme {
 
       case AppTheme.LightTheme:
         return ThemeData.light().copyWith(
-          appBarTheme: AppBarTheme(
+          appBarTheme: const AppBarTheme(
             backgroundColor: Colors.blue,
             titleTextStyle: TextStyle(color: Colors.white, fontSize: 20),
           ),
@@ -31,29 +34,30 @@ extension AppThemeData on AppTheme {
         return ThemeData(
           brightness: Brightness.light,
           useMaterial3: true,
-          primaryColor: Color(0xFF72603F),
+          primaryColor: const Color(0xFF72603F),
           colorScheme: ColorScheme.fromSwatch().copyWith(
-            primary: Color(0xFF72603F),
-            secondary: Color(0xFF8D774E),
-            background: Color(0xFFF8EBD5),
-            surface: Color(0xFFF4E1C1),
+            primary: const Color(0xFF72603F),
+            secondary: const Color(0xFF8D774E),
+            background: const Color(0xFFF8EBD5),
+            surface: const Color(0xFFF4E1C1),
             onPrimary: Colors.white,
             onSecondary: Colors.white,
-            onBackground: Color(0xFF010101),
-            onSurface: Color(0xFF010101),
+            onBackground: const Color(0xFF010101),
+            onSurface: const Color(0xFF010101),
           ),
-          scaffoldBackgroundColor: Color(0xFFF8EBD5), // Sepia theme background
-          appBarTheme: AppBarTheme(
+          scaffoldBackgroundColor:
+              const Color(0xFFF8EBD5), // Sepia theme background
+          appBarTheme: const AppBarTheme(
             backgroundColor: Color(0xFF72603F),
             titleTextStyle: TextStyle(color: Color(0xFFF8EBD5), fontSize: 20),
           ),
-          textTheme: TextTheme(
+          textTheme: const TextTheme(
             bodyMedium:
                 TextStyle(color: Color(0xFF010101), fontFamily: 'Quran'),
             bodyLarge: TextStyle(color: Color(0xFF010101), fontFamily: 'Quran'),
           ),
-          iconTheme: IconThemeData(color: Color(0xFFF4E1C1)),
-          buttonTheme: ButtonThemeData(
+          iconTheme: const IconThemeData(color: Color(0xFFF4E1C1)),
+          buttonTheme: const ButtonThemeData(
             buttonColor: Color(0xFF72603F),
             textTheme: ButtonTextTheme.primary,
           ),

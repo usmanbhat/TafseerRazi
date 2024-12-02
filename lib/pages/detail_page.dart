@@ -40,7 +40,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
         filteredData = jsonList; // Initially, display all data
       });
     } catch (e) {
-      print('Error loading JSON: $e');
+      //print('Error loading JSON: $e');
     }
   }
 
@@ -55,7 +55,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
   void navigateToAyah(int index) {
     if (index >= 0 && index < surahData.length) {
       setState(() {
-        currentIndex = index - 1;
+        currentIndex = index;
       });
     }
   }
@@ -72,6 +72,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
   String limitText(String text) {
     List<String> words = text.split(' ');
     if (words.length > 6) {
+      // ignore: prefer_interpolation_to_compose_strings
       return words.take(6).join(' ') + '...';
     }
     return text;
@@ -114,7 +115,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final themeProvider = Provider.of<ThemeProvider>(context);
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     final themeMode = themeProvider.appTheme;
 
     Color drawerColor;
@@ -127,7 +128,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
       textColor = Colors.black;
     } else {
       // Sepia theme
-      drawerColor = Color(0xFFF4E1C1);
+      drawerColor = const Color(0xFFF4E1C1);
       textColor = Colors.brown[900]!;
     }
 
@@ -148,18 +149,18 @@ class _DetailsScreenState extends State<DetailsScreen> {
             Expanded(
               child: Text(
                 widget.surah['stitle'],
-                style: TextStyle(
+                style: const TextStyle(
                   fontFamily: 'QuranNames',
                 ),
                 textDirection: TextDirection.rtl,
               ),
             ),
             IconButton(
-              icon: Icon(Icons.settings),
+              icon: const Icon(Icons.settings),
               onPressed: () async {
                 bool? result = await Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SettingsPage()),
+                  MaterialPageRoute(builder: (context) => const SettingsPage()),
                 );
                 if (result == true) {
                   setState(() {
@@ -176,80 +177,88 @@ class _DetailsScreenState extends State<DetailsScreen> {
           : Directionality(
               textDirection: TextDirection.rtl,
               child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        alignment: Alignment.center,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          color: drawerColor, // Background color
-                          border: Border.all(
-                              color: textColor, width: 1), // Add a border
-                          borderRadius:
-                              BorderRadius.circular(8), // Round corners
-                          boxShadow: [
-                            BoxShadow(
-                              color: textColor, // Shadow color
-                              blurRadius: 4, // Spread of shadow
-                              offset: Offset(2, 2), // Position of shadow
-                            ),
-                          ],
-                        ),
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 12, vertical: 8),
-                        margin: const EdgeInsets.only(bottom: 16),
-                        child: Text(
-                          surahData[currentIndex]['title'] ?? '',
-                          style: TextStyle(
-                            fontSize: textSize + 4,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'Quran',
-                            color: textColor,
-                          ),
-                          textDirection: TextDirection.rtl,
-                        ),
-                      ),
-                      Expanded(
-                        child: ListView(
-                          children: [
-                            RichText(
-                              text: styleTextWithBraces(
-                                surahData[currentIndex]['details'] ?? '',
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(height: 16),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Title and Content inside a scrollable ListView
+                    Expanded(
+                      child: ListView(
                         children: [
-                          IconButton(
-                            icon: const Icon(Icons.arrow_back),
-                            color:
-                                Theme.of(context).appBarTheme.backgroundColor,
-                            onPressed: () {
-                              if (currentIndex > 0) {
-                                navigateToAyah(currentIndex - 1);
-                              }
-                            },
+                          // Title Section
+                          Container(
+                            alignment: Alignment.center,
+                            width: double.infinity,
+                            // Fixed height for the title
+                            decoration: BoxDecoration(
+                              color: drawerColor, // Background color
+                              border: Border.all(
+                                color: textColor,
+                                width: 1,
+                              ), // Add a border
+                              borderRadius:
+                                  BorderRadius.circular(8), // Round corners
+                              boxShadow: [
+                                BoxShadow(
+                                  color: textColor, // Shadow color
+                                  blurRadius: 4, // Spread of shadow
+                                  offset:
+                                      const Offset(2, 2), // Position of shadow
+                                ),
+                              ],
+                            ),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 12, vertical: 8),
+                            margin: const EdgeInsets.only(bottom: 16),
+                            child: Text(
+                              surahData[currentIndex]['title'] ?? '',
+                              style: TextStyle(
+                                fontSize: textSize + 4,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Quran',
+                                color: textColor,
+                              ),
+                              textDirection: TextDirection.rtl,
+                            ),
                           ),
-                          IconButton(
-                            icon: const Icon(Icons.arrow_forward),
-                            color:
-                                Theme.of(context).appBarTheme.backgroundColor,
-                            onPressed: () {
-                              if (currentIndex < surahData.length - 1) {
-                                navigateToAyah(currentIndex + 1);
-                              }
-                            },
+                          // Content Section
+                          //
+                          RichText(
+                            text: styleTextWithBraces(
+                              surahData[currentIndex]['details'] ?? '',
+                            ),
                           ),
                         ],
                       ),
-                    ],
-                  )),
+                    ),
+                    const SizedBox(height: 16),
+                    // Navigation Buttons
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        IconButton(
+                          icon: const Icon(Icons.arrow_back),
+                          color: Theme.of(context).appBarTheme.backgroundColor,
+                          onPressed: () {
+                            if (currentIndex > 0) {
+                              navigateToAyah(currentIndex - 1);
+                            }
+                          },
+                        ),
+                        IconButton(
+                          icon: const Icon(Icons.arrow_forward),
+                          color: Theme.of(context).appBarTheme.backgroundColor,
+                          onPressed: () {
+                            if (currentIndex < surahData.length - 1) {
+                              navigateToAyah(currentIndex + 1);
+                            }
+                          },
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
             ),
       endDrawer: buildDrawer(drawerColor, textColor),
     );
@@ -312,7 +321,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
 
                     return ListTile(
                       leading: Text(
-                        '${id}.', // Add numbering
+                        '$id.', // Add numbering
                         style: TextStyle(
                           fontSize: textSize,
                           color: textColor,
@@ -329,7 +338,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       ),
                       onTap: () {
                         Navigator.pop(context);
-                        navigateToAyah(id); // Use the hidden ID for navigation
+                        print(id);
+                        navigateToAyah(
+                            id - 1); // Use the hidden ID for navigation
                       },
                     );
                   },

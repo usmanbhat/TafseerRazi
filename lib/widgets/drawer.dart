@@ -32,7 +32,7 @@ class MyDrawer extends StatelessWidget {
         child: ListView(
           children: [
             DrawerHeader(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color:
                     Color(0xFFB89B72), // Base color in case image fails to load
               ),
@@ -54,13 +54,13 @@ class MyDrawer extends StatelessWidget {
               leading: const Icon(Icons.settings),
               title: const Text('Settings'),
               onTap: () => Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => SettingsPage())),
+                  MaterialPageRoute(builder: (context) => const SettingsPage())),
             ),
             ListTile(
               leading: const Icon(Icons.info),
               title: const Text('About Us'),
               onTap: () => Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => AboutPage())),
+                  MaterialPageRoute(builder: (context) => const AboutPage())),
             ),
           ],
         ),
