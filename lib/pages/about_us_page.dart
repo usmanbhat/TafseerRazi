@@ -32,7 +32,8 @@ class AboutPage extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () => _launchURL('https://usman-bhat.github.io/home/'),
+              onPressed: () =>
+                  _launchURL('https://portfolio-mohammad.web.app/'),
               child: const Text('View My Portfolio'),
             ),
             const SizedBox(height: 20),
@@ -42,8 +43,8 @@ class AboutPage extends StatelessWidget {
                 IconButton(
                   icon: const FaIcon(FontAwesomeIcons.linkedin),
                   color: Theme.of(context).appBarTheme.backgroundColor,
-                  onPressed: () =>
-                      _launchURL('https://www.linkedin.com/in/usman-bhat/'),
+                  onPressed: () => _launchURL(
+                      'https://www.linkedin.com/in/mohammad-usman-bhat-75779716b/'),
                   tooltip: 'LinkedIn',
                 ),
                 IconButton(
