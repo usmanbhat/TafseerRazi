@@ -1,9 +1,15 @@
 import 'dart:convert';
-import '/pages/settings_page.dart';
+import 'dart:html' as html; // Import for web-specific functionality
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:provider/provider.dart';
 import '../theme_provider.dart';
+import '../widgets/styled_text.dart';
+import '../pages/settings_page.dart';
+
+import 'package:flutter/foundation.dart' show kIsWeb;
+
+// Use metadata updates only if on the web
 
 class DetailsScreen extends StatefulWidget {
   final Map<String, dynamic> surah;
@@ -27,6 +33,14 @@ class _DetailsScreenState extends State<DetailsScreen> {
     super.initState();
     loadSettings();
     loadSurahData();
+
+    // Set initial metadata
+    if (kIsWeb) {
+      updateMetaTags(
+        widget.surah['stitle'] ?? 'Surah Title',
+        'Explore details of the Surah and its Ayahs dynamically.',
+      );
+    }
   }
 
   Future<void> loadSurahData() async {
@@ -56,6 +70,13 @@ class _DetailsScreenState extends State<DetailsScreen> {
     if (index >= 0 && index < surahData.length) {
       setState(() {
         currentIndex = index;
+        // Dynamically update metadata
+        if (kIsWeb) {
+          updateMetaTags(
+            surahData[currentIndex]['title'] ?? 'Ayah Title',
+            surahData[currentIndex]['details'] ?? 'Ayah details or translation',
+          );
+        }
       });
     }
   }
@@ -69,48 +90,38 @@ class _DetailsScreenState extends State<DetailsScreen> {
     });
   }
 
+  void updateMetaTags(String title, String description) {
+    // Update the page title
+    html.document.title = title;
+
+    // Remove existing meta description
+    final existingDescription = html.document.head!
+        .querySelector('meta[name="description"]') as html.MetaElement?;
+    existingDescription?.remove();
+
+    // Add new meta description
+    final descriptionMeta = html.MetaElement()
+      ..name = 'description'
+      ..content = description;
+    html.document.head!.append(descriptionMeta);
+
+    // Optional: Add keywords for SEO
+    final existingKeywords = html.document.head!
+        .querySelector('meta[name="keywords"]') as html.MetaElement?;
+    existingKeywords?.remove();
+
+    final keywordsMeta = html.MetaElement()
+      ..name = 'keywords'
+      ..content = 'Quran, Ayah, Surah, $title';
+    html.document.head!.append(keywordsMeta);
+  }
+
   String limitText(String text) {
     List<String> words = text.split(' ');
     if (words.length > 6) {
-      // ignore: prefer_interpolation_to_compose_strings
       return words.take(6).join(' ') + '...';
     }
     return text;
-  }
-
-  TextSpan styleTextWithBraces(String text) {
-    final regex = RegExp(r'\{(.*?)\}');
-    List<TextSpan> spans = [];
-    int lastMatchEnd = 0;
-
-    Color textColor =
-        Theme.of(context).textTheme.bodyLarge?.color ?? Colors.black;
-
-    regex.allMatches(text).forEach((match) {
-      if (match.start > lastMatchEnd) {
-        spans.add(TextSpan(
-          text: text.substring(lastMatchEnd, match.start),
-          style: TextStyle(
-              fontSize: textSize, fontFamily: fontFamily, color: textColor),
-        ));
-      }
-      spans.add(TextSpan(
-        text: match.group(1),
-        style: TextStyle(
-            color: Colors.blue, fontSize: textSize, fontFamily: 'Quran'),
-      ));
-      lastMatchEnd = match.end;
-    });
-
-    if (lastMatchEnd < text.length) {
-      spans.add(TextSpan(
-        text: text.substring(lastMatchEnd),
-        style: TextStyle(
-            fontSize: textSize, fontFamily: fontFamily, color: textColor),
-      ));
-    }
-
-    return TextSpan(children: spans);
   }
 
   @override
@@ -127,21 +138,17 @@ class _DetailsScreenState extends State<DetailsScreen> {
       drawerColor = Colors.white;
       textColor = Colors.black;
     } else {
-      // Sepia theme
       drawerColor = const Color(0xFFF4E1C1);
       textColor = Colors.brown[900]!;
     }
 
     return Scaffold(
       appBar: AppBar(
-        leading: Tooltip(
-          message: 'Go back to Surah list',
-          child: IconButton(
-            icon: const Icon(Icons.arrow_back),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -181,31 +188,19 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Title and Content inside a scrollable ListView
-                    Expanded(
+                    Flexible(
                       child: ListView(
                         children: [
-                          // Title Section
                           Container(
                             alignment: Alignment.center,
                             width: double.infinity,
-                            // Fixed height for the title
                             decoration: BoxDecoration(
-                              color: drawerColor, // Background color
+                              color: drawerColor,
                               border: Border.all(
                                 color: textColor,
                                 width: 1,
-                              ), // Add a border
-                              borderRadius:
-                                  BorderRadius.circular(8), // Round corners
-                              boxShadow: [
-                                BoxShadow(
-                                  color: textColor, // Shadow color
-                                  blurRadius: 4, // Spread of shadow
-                                  offset:
-                                      const Offset(2, 2), // Position of shadow
-                                ),
-                              ],
+                              ),
+                              borderRadius: BorderRadius.circular(8),
                             ),
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 12, vertical: 8),
@@ -221,24 +216,20 @@ class _DetailsScreenState extends State<DetailsScreen> {
                               textDirection: TextDirection.rtl,
                             ),
                           ),
-                          // Content Section
-                          //
-                          RichText(
-                            text: styleTextWithBraces(
-                              surahData[currentIndex]['details'] ?? '',
-                            ),
+                          StyledTextWithBraces(
+                            text: surahData[currentIndex]['details'],
+                            textSize: textSize,
+                            fontFamily: fontFamily,
                           ),
                         ],
                       ),
                     ),
                     const SizedBox(height: 16),
-                    // Navigation Buttons
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         IconButton(
                           icon: const Icon(Icons.arrow_back),
-                          color: Theme.of(context).appBarTheme.backgroundColor,
                           onPressed: () {
                             if (currentIndex > 0) {
                               navigateToAyah(currentIndex - 1);
@@ -247,7 +238,6 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         ),
                         IconButton(
                           icon: const Icon(Icons.arrow_forward),
-                          color: Theme.of(context).appBarTheme.backgroundColor,
                           onPressed: () {
                             if (currentIndex < surahData.length - 1) {
                               navigateToAyah(currentIndex + 1);
@@ -260,144 +250,6 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 ),
               ),
             ),
-      endDrawer: buildDrawer(drawerColor, textColor),
     );
   }
-
-  Drawer buildDrawer(Color drawerColor, Color textColor) {
-    return Drawer(
-      child: Container(
-        color: drawerColor,
-        child: Directionality(
-          textDirection: TextDirection.rtl, // Set text direction to RTL
-          child: Column(
-            children: [
-              // Add a card above the search bar
-              Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Card(
-                  color: drawerColor, // Card background color
-                  elevation: 4.0, // Optional: Add shadow for a raised effect
-                  shape: RoundedRectangleBorder(
-                    borderRadius:
-                        BorderRadius.circular(12.0), // Rounded corners
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Text(
-                      'البحث عن آية في السورة',
-                      style: TextStyle(
-                        fontSize: 16.0, // Text size
-                        fontFamily: 'Noto',
-                        // Use Noto font
-                        color:
-                            textColor, // Use the text color passed to the drawer
-                      ),
-                      textDirection: TextDirection.rtl,
-                      textAlign: TextAlign.center, // Justify the text
-                    ),
-                  ),
-                ),
-              ),
-              // Search bar
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: TextField(
-                  decoration: const InputDecoration(
-                    labelText: 'بحث عن الآية',
-                    border: OutlineInputBorder(),
-                  ),
-                  onChanged: handleSearch,
-                ),
-              ),
-              // List of items
-              Expanded(
-                child: ListView.builder(
-                  itemCount: filteredData.length,
-                  itemBuilder: (context, index) {
-                    final ayah = filteredData[index];
-                    final title = limitText(ayah['title']); // Shortened title
-                    final id = ayah['babnum']; // Hidden ID for navigation
-
-                    return ListTile(
-                      leading: Text(
-                        '$id.', // Add numbering
-                        style: TextStyle(
-                          fontSize: textSize,
-                          color: textColor,
-                        ),
-                      ),
-                      title: Text(
-                        title,
-                        style: TextStyle(
-                          fontSize: textSize,
-                          fontFamily: fontFamily,
-                          color: textColor,
-                        ),
-                        textDirection: TextDirection.rtl,
-                      ),
-                      onTap: () {
-                        Navigator.pop(context);
-                        print(id);
-                        navigateToAyah(
-                            id - 1); // Use the hidden ID for navigation
-                      },
-                    );
-                  },
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-  // Drawer buildDrawer(Color drawerColor, Color textColor) {
-  //   return Drawer(
-  //     child: Container(
-  //       color: drawerColor,
-  //       child: Directionality(
-  //         textDirection: TextDirection.rtl,
-  //         child: Column(
-  //           children: [
-  //             Padding(
-  //               padding: const EdgeInsets.all(16.0),
-  //               child: TextField(
-  //                 decoration: const InputDecoration(
-  //                   labelText: 'بحث عن الآية',
-  //                   border: OutlineInputBorder(),
-  //                 ),
-  //                 onChanged: handleSearch,
-  //               ),
-  //             ),
-  //             Expanded(
-  //               child: ListView.builder(
-  //                 itemCount: filteredData.length,
-  //                 itemBuilder: (context, index) {
-  //                   final ayah = filteredData[index];
-  //                   final title = limitText(ayah['title']);
-  //                   return ListTile(
-  //                     title: Text(
-  //                       title,
-  //                       style: TextStyle(
-  //                         fontSize: textSize,
-  //                         fontFamily: fontFamily,
-  //                         color: textColor, // Apply text color
-  //                       ),
-  //                       textDirection: TextDirection.rtl,
-  //                     ),
-  //                     onTap: () {
-  //                       Navigator.pop(context);
-  //                       navigateToAyah(index);
-  //                     },
-  //                   );
-  //                 },
-  //               ),
-  //             ),
-  //           ],
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
 }
