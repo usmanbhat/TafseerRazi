@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'dart:html' as html; // Import for web-specific functionality
+import 'dart:html' as html;
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:provider/provider.dart';
@@ -230,6 +230,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       children: [
                         IconButton(
                           icon: const Icon(Icons.arrow_back),
+                          color: textColor,
                           onPressed: () {
                             if (currentIndex > 0) {
                               navigateToAyah(currentIndex - 1);
@@ -238,6 +239,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         ),
                         IconButton(
                           icon: const Icon(Icons.arrow_forward),
+                          color: textColor,
                           onPressed: () {
                             if (currentIndex < surahData.length - 1) {
                               navigateToAyah(currentIndex + 1);
@@ -250,6 +252,97 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 ),
               ),
             ),
+      endDrawer: buildDrawer(drawerColor, textColor),
+    );
+  }
+
+  Drawer buildDrawer(Color drawerColor, Color textColor) {
+    return Drawer(
+      child: Container(
+        color: drawerColor,
+        child: Directionality(
+          textDirection: TextDirection.rtl, // Set text direction to RTL
+          child: Column(
+            children: [
+              // Add a card above the search bar
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 5, 5),
+                child: Card(
+                  color: drawerColor, // Card background color
+                  elevation: 4.0, // Optional: Add shadow for a raised effect
+                  shape: RoundedRectangleBorder(
+                    borderRadius:
+                        BorderRadius.circular(12.0), // Rounded corners
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Text(
+                      ' Search in Chapters \r |البحث عن آية في السورة',
+                      style: TextStyle(
+                        fontSize: 15.0, // Text size
+                        fontFamily: 'Noto',
+                        fontStyle: FontStyle.normal,
+                        // Use Noto font
+                        color:
+                            textColor, // Use the text color passed to the drawer
+                      ),
+                      textDirection: TextDirection.rtl,
+                      textAlign: TextAlign.center, // Justify the text
+                    ),
+                  ),
+                ),
+              ),
+              // Search bar
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: TextField(
+                  decoration: const InputDecoration(
+                    labelText: 'بحث عن الآية',
+                    border: OutlineInputBorder(),
+                  ),
+                  onChanged: handleSearch,
+                ),
+              ),
+              // List of items
+              Expanded(
+                child: ListView.builder(
+                  itemCount: filteredData.length,
+                  itemBuilder: (context, index) {
+                    final ayah = filteredData[index];
+                    final title = limitText(ayah['title']); // Shortened title
+                    final id = ayah['babnum']; // Hidden ID for navigation
+
+                    return ListTile(
+                      leading: Text(
+                        '$id.', // Add numbering
+                        style: TextStyle(
+                          fontSize: textSize,
+                          color: textColor,
+                        ),
+                      ),
+                      title: Text(
+                        title,
+                        style: TextStyle(
+                          fontSize: textSize,
+                          fontFamily: 'Quran',
+                          color: textColor,
+                        ),
+                        textDirection: TextDirection.rtl,
+                      ),
+                      onTap: () {
+                        Navigator.pop(context);
+                        print(id);
+                        navigateToAyah(
+                            id - 1); // Use the hidden ID for navigation
+                      },
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
